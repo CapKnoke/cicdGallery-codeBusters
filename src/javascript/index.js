@@ -1,8 +1,9 @@
 import '../styles/main.scss';
-
-// Create heading node
-const heading = document.createElement('h1');
-heading.textContent = 'CodeBusters';
+import navBar from './components/navbar';
+import searchForm from './components/searchBar';
+import gallery from './components/gallery';
 
 const app = document.querySelector('#root');
-app.append(heading);
+app.append(navBar);
+app.append(searchForm);
+app.append(gallery);
