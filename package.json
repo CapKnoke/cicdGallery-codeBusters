@@ -6,8 +6,9 @@
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "build-workflow": "webpack --config webpack.common.js",
+    "build-workflow": "webpack --config webpack.workflow.js",
     "test": "jest",
+    "pretest": "npm run build-workflow",
     "lint": "eslint '**/*.js'"
   },
   "repository": {

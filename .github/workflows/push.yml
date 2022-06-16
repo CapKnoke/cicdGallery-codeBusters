@@ -13,6 +13,5 @@ jobs:
         with:
           node-version: '12'
       - run: npm ci
-      - run: npm run build-workflow
       - run: npm t
       - run: npx eslint --ext '**/*.js'

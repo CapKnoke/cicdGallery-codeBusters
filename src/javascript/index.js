@@ -41,9 +41,10 @@ const render = rootElement => {
   });
 };
 
+const app = document.querySelector('#root');
+render(app);
+
 window.onload = async () => {
-  const app = document.querySelector('#root');
-  render(app);
   stateHandler.setStateFromStorage();
 };
 
