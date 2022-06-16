@@ -14,8 +14,16 @@ describe('dom tests', () => {
       runScripts: "dangerously",
       url: "https://example.org/",
     });
-    const navbar = dom.window.document.querySelector('#root > nav');
-  test('Does navbar exist', () => {
-    expect(navbar.className).toBe('navbar');
-  })
+    test('Has Navbar', () => {
+      const navbar = dom.window.document.querySelector('#root > nav');
+      expect(navbar.className).toBe('navbar');
+    });
+    test('Has search field', () => {
+      const searchField = dom.window.document.querySelector('#root > form');
+      expect(searchField.className).toBe('search-form');
+    });
+    test('Has gallery', () => {
+      const gallery = dom.window.document.querySelector('#root > section');
+      expect(gallery.className).toBe('gallery');
+    });
 })

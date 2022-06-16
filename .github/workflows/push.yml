@@ -1,0 +1,18 @@
+name: CI-Lint and Test
+on:
+  push:
+    branches: [ "development" ]
+  workflow_dispatch:
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: npm ci
+      - run: npm run build
+      - run: npm t
+      - run: npx eslint --ext '**/*.js'

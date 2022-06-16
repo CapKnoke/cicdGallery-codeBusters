@@ -1,0 +1,16 @@
+name: CI-Audit
+on:
+  pull:
+    branches: [ "development" ]
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: npm ci
+      - run: npm audit
