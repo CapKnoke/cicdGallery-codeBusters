@@ -1,3 +1,25 @@
+const generateCard = (image, desc, photographer) => {
+  const innerCard = document.createElement('div');
+  innerCard.className = 'card-container';
+
+  const imageElement = document.createElement('img');
+  imageElement.className = 'card__image';
+  imageElement.src = `${image}&h=500`;
+
+  const description = document.createElement('p');
+  description.className = 'card__text';
+  description.innerHTML = `<strong>Photographer: ${photographer}</strong>
+  <br>${desc || 'No description available'}`;
+
+  innerCard.append(imageElement, description);
+
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.appendChild(innerCard);
+
+  return card;
+};
+
 const unsplashApi = {
   getSearchResults: async (searchTerm, page = 1) => {
     const url = `https://api.unsplash.com/search/photos?per_page=6&page=${page}&query=${searchTerm}`;
@@ -12,13 +34,11 @@ const unsplashApi = {
   },
   appendToGallery: (results, element) => {
     results.forEach(result => {
-      const image = document.createElement('img');
-      image.className = 'gallery__img';
       const imgUrl = result.urls.small
         .replace('fit=max', 'fit=crop')
         .replace('crop=entropy', '');
-      image.src = `${imgUrl}&h=500`;
-      element.append(image);
+      const card = generateCard(imgUrl, result.description, result.user.name);
+      element.append(card);
     });
   },
 };

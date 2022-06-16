@@ -5,13 +5,16 @@
 }
 
 .navbar {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 100;
   width: 100%;
-  height: 100px;
+  height: 10vh;
   display: flex;
   justify-content: center;
   background-color: grey;
   .logo-container {
-    
     height: 100%;
     &__logo {
       max-width: auto;
@@ -41,13 +44,57 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
+
+.card {
+  background-color: transparent;
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.card-container {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card:hover .card-container {
+  transform: rotateY(180deg);
+}
+
+.card__image, .card__text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__text {
+  // text-align: center;
+  padding: 10%;
+  background-color: #5b8c5d;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.photographer {
+  font-weight: bold;
+}
+
+.description {
+  font-style: italic;
+}
+
+@media screen and (min-width: 768px) {
   .gallery {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media only screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .gallery {
     grid-template-columns: repeat(3, 1fr);
   }
