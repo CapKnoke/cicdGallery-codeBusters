@@ -1,6 +1,6 @@
 name: CI-Audit
 on:
-  pull:
+  pull_request:
     branches: [ "development" ]
   workflow_dispatch:
 jobs:
