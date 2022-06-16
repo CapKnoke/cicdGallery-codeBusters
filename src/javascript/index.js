@@ -4,16 +4,16 @@ import searchForm from './components/searchBar';
 import gallery from './components/gallery';
 import unsplashApi from './utilities/unsplashApi';
 import stateHandler from './utilities/stateHandler';
+import buttonContainer from './components/buttons';
 
 const render = rootElement => {
-  rootElement.append(navBar);
-  rootElement.append(searchForm);
-  rootElement.append(gallery);
+  rootElement.append(navBar, searchForm, gallery, buttonContainer);
 
   window.addEventListener('statechange', async () => {
     gallery.innerHTML = '';
     const { state } = window.history;
-    const searchResults = await unsplashApi.getSearchResults(state.searchTerm);
+    const page = state.page || 1;
+    const searchResults = await unsplashApi.getSearchResults(state.lastSearch, page);
     unsplashApi.appendToGallery(searchResults, gallery);
   });
 
@@ -21,6 +21,22 @@ const render = rootElement => {
     e.preventDefault();
     const searchValue = document.querySelector('#search-field').value;
     stateHandler.saveSearchToState(searchValue);
+  });
+
+  document.getElementById('next-button').addEventListener('click', () => {
+    const state = stateHandler.getState();
+    const currentPage = state.page || 1;
+    const newState = { ...state, page: currentPage + 1 };
+    stateHandler.setState(newState);
+  });
+
+  document.getElementById('prev-button').addEventListener('click', () => {
+    const state = stateHandler.getState();
+    const currentPage = state.page || 1;
+    if (currentPage > 1) {
+      const newState = { ...state, page: currentPage - 1 };
+      stateHandler.setState(newState);
+    }
   });
 };
 

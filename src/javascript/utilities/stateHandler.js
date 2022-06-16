@@ -20,7 +20,7 @@ const stateHandler = {
   },
   saveSearchToState: search => {
     const stateObj = stateHandler.getState();
-    stateObj.searchTerm = search;
+    stateObj.lastSearch = search;
     stateHandler.setState(stateObj);
   },
 };
