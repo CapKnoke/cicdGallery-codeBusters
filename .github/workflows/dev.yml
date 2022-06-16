@@ -26,7 +26,5 @@ jobs:
         with:
           node-version: '12'
       - run: npm install
-      - name: run test script
-        run: npm test
       - name: run lint
         run: npm run lint
