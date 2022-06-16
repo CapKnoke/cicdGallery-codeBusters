@@ -1,15 +1,27 @@
 const stateHandler = {
   getState: () => {
-    if (window.localStorage.getItem('state') === null) {
-      const stateObj = {
-        previousSearches: [],
-      };
-      window.localStorage.setItem('state', JSON.stringify(stateObj));
+    if (!window.history.state) {
+      return {};
     }
-    return JSON.parse(window.localStorage.getItem('state'));
+    return window.history.state;
   },
   setState: stateObj => {
     window.localStorage.setItem('state', JSON.stringify(stateObj));
+    window.history.pushState(stateObj, '');
+    window.dispatchEvent(new Event('statechange'));
+  },
+  setStateFromStorage: () => {
+    if (window.localStorage.getItem('state') !== null) {
+      const stateObj = JSON.parse(window.localStorage.getItem('state'));
+      const oldState = stateHandler.getState();
+      window.history.pushState({ ...oldState, ...stateObj }, '');
+      window.dispatchEvent(new Event('statechange'));
+    }
+  },
+  saveSearchToState: search => {
+    const stateObj = stateHandler.getState();
+    stateObj.searchTerm = search;
+    stateHandler.setState(stateObj);
   },
 };
 
