@@ -21,6 +21,7 @@ const stateHandler = {
   saveSearchToState: search => {
     const stateObj = stateHandler.getState();
     stateObj.lastSearch = search;
+    stateObj.page = 1;
     stateHandler.setState(stateObj);
   },
 };

@@ -1,3 +1,5 @@
+import searchIcon from '../../img/search_black_24dp.svg';
+
 const searchForm = document.createElement('form');
 searchForm.className = 'search-form';
 searchForm.action = '';
@@ -13,10 +15,20 @@ const dataList = document.createElement('datalist');
 dataList.id = 'previous-searches';
 
 const searchButton = document.createElement('input');
-searchButton.className = 'search-form__button';
+searchButton.classList.add('search-form__button', 'hide');
+searchButton.id = 'form-submit';
 searchButton.type = 'submit';
 searchButton.value = 'Search';
 
-searchForm.append(input, dataList, searchButton);
+const searchIconImg = document.createElement('img');
+searchIconImg.className = 'search-form__label--image';
+searchIconImg.src = searchIcon;
+
+const searchLabel = document.createElement('label');
+searchLabel.className = 'search-form__label';
+searchLabel.setAttribute('for', 'form-submit');
+searchLabel.appendChild(searchIconImg);
+
+searchForm.append(input, dataList, searchLabel, searchButton);
 
 export default searchForm;

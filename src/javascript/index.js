@@ -5,9 +5,10 @@ import gallery from './components/gallery';
 import unsplashApi from './utilities/unsplashApi';
 import stateHandler from './utilities/stateHandler';
 import buttonContainer from './components/buttons';
+import footer from './components/footer';
 
 const render = rootElement => {
-  rootElement.append(navBar, searchForm, gallery, buttonContainer);
+  rootElement.append(navBar, searchForm, gallery, buttonContainer, footer);
 
   window.addEventListener('statechange', async () => {
     gallery.innerHTML = '';
@@ -40,11 +41,9 @@ const render = rootElement => {
   });
 };
 
-const app = document.querySelector('#root');
-
-render(app);
-
 window.onload = async () => {
+  const app = document.querySelector('#root');
+  render(app);
   stateHandler.setStateFromStorage();
 };
 

@@ -7,9 +7,9 @@ const generateCard = (image, desc, photographer) => {
   imageElement.src = `${image}&h=500`;
 
   const description = document.createElement('p');
-  description.className = 'card__text';
-  description.innerHTML = `<strong>Photographer: ${photographer}</strong>
-  <br>${desc || 'No description available'}`;
+  description.className = 'card__text-container';
+  description.innerHTML = `<h3>Photographer: ${photographer}</h3>
+  <p>${desc || 'No description available'}</p>`;
 
   innerCard.append(imageElement, description);
 
@@ -22,10 +22,11 @@ const generateCard = (image, desc, photographer) => {
 
 const unsplashApi = {
   getSearchResults: async (searchTerm, page = 1) => {
-    const url = `https://api.unsplash.com/search/photos?per_page=6&page=${page}&query=${searchTerm}`;
+    const url = `https://api.unsplash.com/search/photos?per_page=9&page=${page}&query=${searchTerm}`;
     return fetch(url, {
       mode: 'cors',
       headers: {
+        'Set-Cookie': 'Same-Site=Secure',
         Authorization: `Client-ID ${process.env.ACCESS_KEY}`,
       },
     }).then(res => res.json())
