@@ -23,4 +23,4 @@ jobs:
           node-version: '12'
       - run: npm ci
       - run: npm t
-      - run: npx run eslint '**/*.js'
+      - run: npm run lint
