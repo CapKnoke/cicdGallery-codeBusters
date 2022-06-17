@@ -4,7 +4,7 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 jobs:
-  audit:
+  setup-and-audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,5 +14,12 @@ jobs:
           node-version: '12'
       - run: npm ci
       - run: npm audit
+  start-server:
+    needs: setup-and-audit
+    steps:
       - run: npm run start:workflow
+  e2e-tests:
+    needs: start-server
+    steps:
       - run: npm run e2e
+
