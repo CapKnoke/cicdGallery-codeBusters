@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
+    "start:workflow": "webpack serve --config webpack.workflow.js",
     "build": "webpack --config webpack.prod.js",
     "build-workflow": "webpack --config webpack.workflow.js",
     "test": "jest __test__/*",
