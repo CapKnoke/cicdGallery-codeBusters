@@ -4,3 +4,5 @@ webpack.*.js
 babel.*.js
 __test__
 postcss.*.js
+cypress.*.js
+cypress
