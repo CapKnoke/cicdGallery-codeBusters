@@ -7,7 +7,7 @@
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build-workflow": "webpack --config webpack.workflow.js",
-    "test": "jest",
+    "test": "jest __test__/*",
     "pretest": "npm run build-workflow",
     "cypress:open": "cypress open",
     "e2e": "cypress run",
