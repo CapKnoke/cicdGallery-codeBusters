@@ -1,1 +1,6 @@
 node_modules
+dist
+webpack.*.js
+babel.*.js
+__test__
+postcss.*.js

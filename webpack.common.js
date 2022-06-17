@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
+
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -41,12 +41,16 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new Dotenv(),
-    new ESLintPlugin(),
+
   ],
   resolve: {
     extensions: ['*', '.js'],
   },
+  optimization: {
+    minimize: false,
+  },
   output: {
+    publicPath: '',
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js'
   },
