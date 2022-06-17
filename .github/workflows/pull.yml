@@ -14,5 +14,5 @@ jobs:
           node-version: '12'
       - run: npm ci
       - run: npm audit
-      - run: npm start:workflow
+      - run: npm run start:workflow
       - run: npm run e2e
