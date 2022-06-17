@@ -41,6 +41,7 @@ const render = rootElement => {
   });
 };
 
+// Rendering the page, duh
 const app = document.querySelector('#root');
 render(app);
 
