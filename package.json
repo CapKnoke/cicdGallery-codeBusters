@@ -9,6 +9,8 @@
     "build-workflow": "webpack --config webpack.workflow.js",
     "test": "jest",
     "pretest": "npm run build-workflow",
+    "cypress:open": "cypress open",
+    "e2e": "cypress run",
     "lint": "eslint '**/*.js'"
   },
   "repository": {
@@ -30,6 +32,8 @@
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
+    "cypress": "^9.7.0",
+    "cypress-real-events": "^1.7.0",
     "dotenv-webpack": "^7.1.0",
     "eslint-config-salt": "^1.2.0",
     "eslint-webpack-plugin": "^3.1.1",

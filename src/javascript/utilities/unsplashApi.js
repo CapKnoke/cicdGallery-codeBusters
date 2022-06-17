@@ -22,7 +22,7 @@ const generateCard = (image, desc, photographer) => {
 
 const unsplashApi = {
   getSearchResults: async (searchTerm, page = 1) => {
-    const url = `https://api.unsplash.com/search/photos?per_page=9&page=${page}&query=${searchTerm}`;
+    const url = `https://api.unsplash.com/search/photos?per_page=6&page=${page}&query=${searchTerm}`;
     return fetch(url, {
       mode: 'cors',
       headers: {
