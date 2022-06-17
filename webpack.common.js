@@ -2,8 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const Dotenv = require('dotenv-webpack');
-
 module.exports = {
   entry: {
     main: path.resolve(__dirname, './src/javascript/index.js'),
@@ -40,8 +38,6 @@ module.exports = {
       filename: 'index.html',
     }),
     new CleanWebpackPlugin(),
-    new Dotenv(),
-
   ],
   resolve: {
     extensions: ['*', '.js'],
