@@ -42,9 +42,6 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js'],
   },
-  optimization: {
-    minimize: false,
-  },
   output: {
     publicPath: '',
     path: path.resolve(__dirname, './dist'),
