@@ -42,8 +42,8 @@ const render = rootElement => {
 };
 
 // Rendering the page, duh
-const app = document.querySelector('#root');
-render(app);
+const root = document.querySelector('#root');
+render(root);
 
 window.onload = async () => {
   stateHandler.setStateFromStorage();
